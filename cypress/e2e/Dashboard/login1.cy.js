@@ -1,13 +1,13 @@
 describe('empty spec', () => {
   it('passes', () => {
-    cy.visit('https://dashboard-staging.xendit.co/')
+    cy.visit('https://xendit-dashboard-ui-live.us-west-2.stg.tidnex.dev/')
+
+    cy.get("input[name=email]").type('jennie.jornales@xendit.co')
+    cy.get("input[type=password]").type('Password1!')
+    cy.get("button[type=submit]").click()
+    cy.wait(10000)
+    cy.get("a[id=lhs-home]").contains('Home').should('be.visible')
+  
     
-    cy.get('.mb-16 > .input-text-content > input').type('jennie.jornales+1@xendit.co')
-
-    cy.get(':nth-child(2) > .input-text-content > input').type('Password1!')
-
-    cy.get('.d-flex > .btn').click
-   
-    //test  
   })
 })
