@@ -21,7 +21,7 @@ Given('Training2 assignment', () => {
                     gender: 'FEMALE',
                     employment: {
                         employer_name: 'Xendit',
-                        Nature_of_business: 'Payment Gateway',
+                        //Nature_of_business: 'Payment Gateway',
                         role_description: 'Test dummy'
                     }
                 },
