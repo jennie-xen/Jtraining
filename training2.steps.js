@@ -8,9 +8,11 @@ Given('Training2 assignment', () => {
             user: 'xnd_development_S87MKS1WNnsmNuxKrwMGIXpdQEaO3v9iHerLunZFaqFAQYwcKsSiLvlvYUakwmv',
             pass: '',
         }, 
-        
         body:{
-                reference_id: 'demo_14758019626081',
+
+            
+
+                reference_id: 'demo_14758019626088',
                 type: 'INDIVIDUAL',
                 individual_detail: {
                     given_names: 'JenCustomer',
@@ -64,17 +66,22 @@ Given('Training2 assignment', () => {
                 description: 'My first customer',
                 metadata: {
                     foo: 'bar'
-                          
+                
+                
                 
             }
-        }
-        //
 
+        }
+
+        //
     };
-    return cy.request(options);
+
+    cy.wrap(options).as('request')
+    cy.request(options).as('response');
+    //return cy.request(options);
 })
 
-    Then('request is equal to response', () => {
+Then('request is equal to response', () => {
     const request = {
         "type": 'INDIVIDUAL',
         "email": 'customer@website.com' 
@@ -84,6 +91,11 @@ Given('Training2 assignment', () => {
         "type": 'INDIVIDUAL',
         "email": 'customer@website.com' 
     }
-    expect(request).to.deep.equal(response);
+
+    expect({type: {email: ['x', 'y']}}).to.have.nested.property('type.email[1]');
+
+
+
 })
+
 
