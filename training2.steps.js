@@ -12,7 +12,7 @@ Given('Training2 assignment', () => {
 
             
 
-                reference_id: 'demo_14758019626088',
+                reference_id: 'demo_14758019626092',
                 type: 'INDIVIDUAL',
                 individual_detail: {
                     given_names: 'JenCustomer',
@@ -92,10 +92,12 @@ Then('request is equal to response', () => {
         "email": 'customer@website.com' 
     }
 
-    expect({type: {email: ['x', 'y']}}).to.have.nested.property('type.email[1]');
+
+    cy.get('@request').then(request => {
+        expect({type: {email: ['x', 'y']}}).to.have.nested.property('type.email[1]');
+        })
+    
 
 
 
 })
-
-
