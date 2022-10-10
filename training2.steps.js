@@ -94,8 +94,10 @@ Then('request is equal to response', () => {
 
 
     cy.get('@request').then(request => {
+        cy.get('@response').then(response=> {
         expect({type: {email: ['x', 'y']}}).to.have.nested.property('type.email[1]');
         })
+    })
     
 
 
