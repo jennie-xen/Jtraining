@@ -82,20 +82,13 @@ Given('Training2 assignment', () => {
 })
 
 Then('request is equal to response', () => {
-    const request = {
-        "type": 'INDIVIDUAL',
-        "email": 'customer@website.com' 
-    }
-    
-    const response = {
-        "type": 'INDIVIDUAL',
-        "email": 'customer@website.com' 
-    }
-
 
     cy.get('@request').then(request => {
         cy.get('@response').then(response=> {
-        expect({type: {email: ['x', 'y']}}).to.have.nested.property('type.email[1]');
+        expect(request.body.email).to.nested.include(response.body.email);
+        expect(request.body.type).to.nested.include(response.body.type);
+        expect(request.body.reference_id).to.nested.include(response.body.reference_id);
+        expect(request.body.mobile_number).to.nested.include(response.body.mobile_number);
         })
     })
     
